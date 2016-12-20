@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 var port = process.env.PORT || 3001;        // set our port
 
 // add Controller
-// app.use('/api', require('./controllers/'));
+app.use('/api', require('./controllers/RestfulController'));
 // app.use('/', require('./controllers/ViewsController'));
 
 // start
