@@ -86,10 +86,31 @@ var getProductById = function (req, res) {
     });
 };
 
+var removeProductById = function (req, res) {
+    // remove product by id
+    Product.remove({
+        _id: req.params.id
+    }, function (err, product) {
+        if (err) {
+            res.status(500).json({
+                status: false,
+                error: "Can not remove product because of database error !"
+            });
+            return;
+        }
+
+        res.json({
+            status: true,
+            message: 'Product Successfully deleted'
+        });
+
+    });
+};
 
 
 RestfulController.post('/product', addProduct);
 RestfulController.get('/product', getAllProduct);
 RestfulController.get('/product/:id', getProductById);
+RestfulController.delete('/product/:id', removeProductById);
 
 module.exports = RestfulController;
