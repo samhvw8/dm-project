@@ -27,6 +27,8 @@ var addProduct = function (req, res) {
         product.detail[key] = req.body[key];
     }
 
+    product.markModified('detail')
+
     product.save(function (err) {
         if (err) {
             res.status(500).json({
@@ -83,6 +85,8 @@ var getProductById = function (req, res) {
 
     });
 };
+
+
 
 RestfulController.post('/product', addProduct);
 RestfulController.get('/product', getAllProduct);
