@@ -46,7 +46,28 @@ var addProduct = function (req, res) {
 
 };
 
+var getAllProduct = function (req, res) {
+
+    Product.find(function (err, products) {
+
+        if (err) {
+            res.status(500).json({
+                status: false,
+                error: "Can not get list of product because of database error !"
+            });
+            return;
+        }
+        res.json({
+            status: true,
+            products: products
+        });
+
+    })
+
+};
+
 
 RestfulController.post('/product', addProduct);
+RestfulController.get('/product', getAllProduct);
 
 module.exports = RestfulController;
