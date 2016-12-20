@@ -66,8 +66,26 @@ var getAllProduct = function (req, res) {
 
 };
 
+var getProductById = function (req, res) {
+
+    Product.findById(req.params.id, function (err, product) {
+        if (err) {
+            res.status(500).json({
+                status: false,
+                error: "Can not find product because of database error !"
+            });
+            return;
+        }
+        res.json({
+            status: true,
+            user: product
+        });
+
+    });
+};
 
 RestfulController.post('/product', addProduct);
 RestfulController.get('/product', getAllProduct);
+RestfulController.get('/product/:id', getProductById);
 
 module.exports = RestfulController;
