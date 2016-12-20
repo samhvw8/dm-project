@@ -64,7 +64,7 @@ var getAllProduct = function (req, res) {
             products: products
         });
 
-    })
+    });
 
 };
 
