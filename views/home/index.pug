@@ -16,9 +16,37 @@ html(lang="en")
         .col-md-9
           .product-detail
             .row.button-container.
-              <button type="button" class="btn " data-toggle="modal" data-target="#addProduct">
+              <button type="button" class="btn" data-toggle="modal" data-target="#addProduct">
                 Add product
               </button>
+            .row.button-container.
+              <button type="button" class="btn" id="delete-button">
+                Delete this product
+              </button>
+            .detail-info
+              .row
+                .col-md-2.detail-key.
+                  Name:
+                .col-md-10#name-field.
+
+              .row
+                .col-md-2.detail-key.
+                  Type:
+                .col-md-10#type-field.
+
+              .row
+                .col-md-2.detail-key.
+                  Price:
+                .col-md-10#price-field.
+
+              .row
+                .col-md-2.detail-key.
+                  Description
+                .col-md-10
+              .row
+                .col-md-2.detail-key.
+                .col-md-10.detail-value
     include addModal.pug
+    include deleteModal.pug
 
     script(src='static/js/home.js')

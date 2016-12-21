@@ -22,6 +22,7 @@ nav > .container {
 }
 
 .button-container > button {
+  margin: 5px 0px;
   float: right;
 }
 
@@ -40,4 +41,19 @@ nav > .container {
 
 [data-generated="false"] {
   opacity: 0.5;
+}
+
+/********************** product list ********************/
+.item-product {
+  display: block;
+  cursor: pointer;
+  margin: 5px 0px;
+}
+
+.item-product:focus {
+  color: blue;
+}
+
+.detail-key {
+  font-weight: bold;
 }
