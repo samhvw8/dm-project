@@ -1,0 +1,43 @@
+nav > .container {
+  color: white;
+  font-size: x-large;
+  line-height: 50px;
+}
+
+.body-container {
+  margin: 70px auto;
+  max-width: 1000px;
+}
+
+.product-list {
+  min-height: 300px;
+  max-height: calc(100vh - 70px);
+  overflow: auto;
+  border-right: 1px solid #CCCCCC;
+}
+
+/***************************** product-detail **********************/
+.product-detail {
+  margin-left: 30px;
+}
+
+.button-container > button {
+  float: right;
+}
+
+.des-row {
+  margin-bottom: 5px;
+}
+
+.des-separator {
+  height: 10px;
+}
+
+.modal-dialog {
+    width: 800px;
+    margin: 30px auto;
+}
+
+[data-generated="false"] {
+  opacity: 0.5;
+}

@@ -2,15 +2,23 @@ doctype html
 html(lang="en")
   head
     title= pageTitle
-    script(type='text/javascript').
-      if (foo) bar(1 + 5)
+    link(rel='stylesheet', href='/static/bower-plugins/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/static/css/style.css')
+    script(src='/static/bower-plugins/jquery/dist/jquery.min.js')
+    script(src='/static/bower-plugins/bootstrap/dist/js/bootstrap.min.js')
   body
-    h1 Pug - node template engine
-    #container.col
-      if youAreUsingPug
-        p You are amazing
-      else
-        p Get on it!
-      p.
-        Pug is a terse and simple templating language with a
-        strong focus on performance and powerful features.
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      .container.
+        SSL - Sâm Sơn Lương
+    .body-container
+      .row
+        .col-md-3.product-list
+        .col-md-9
+          .product-detail
+            .row.button-container.
+              <button type="button" class="btn " data-toggle="modal" data-target="#addProduct">
+                Add product
+              </button>
+    include addModal.pug
+
+    script(src='static/js/home.js')
