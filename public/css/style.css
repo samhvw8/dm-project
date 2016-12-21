@@ -41,3 +41,9 @@ nav > .container {
 [data-generated="false"] {
   opacity: 0.5;
 }
+
+/********************** product list ********************/
+.item-product {
+  cursor: pointer;
+  margin: 5px 0px;
+}

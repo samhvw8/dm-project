@@ -20,24 +20,6 @@ $(document).ready(function() {
     addSibling(parent);
   });
 
-  // when user clicks on add subrow button
-  // $(document).on('click', '.add-row-button', function() {
-  //   console.log("ok");
-  //   // get parent object
-  //   var parent = $(this).parents('.des-row');
-  //
-  //   // hide des-value and add-row-button
-  //   parent.find('.des-value').hide();
-  //   parent.find('.add-row-button').hide();
-  //
-  //   // get its offset data
-  //   var offset = parent.data("offset");
-  //   // add a new sibling row with the same offset
-  //   addSibling(parent);
-  //   // add a new sub row
-  //   parent.after(getDesRowHTML(offset + 1));
-  // });
-
   // when user click on add button
   $(document).on('click', '#add-button', function() {
     var name = $('#product-name').val();
@@ -73,13 +55,13 @@ $(document).ready(function() {
 
 function onCreateSuccess() {
   alert("created successfully");
-  //location.reload();
+  location.reload();
 }
 
 function onCreateError(error) {
   console.log(error);
   alert("Opps! Something went wrong.");
-  //location.reload();
+  location.reload();
 }
 
 function addSibling(obj) {
@@ -118,8 +100,19 @@ function onGetProductError(error) {
 function showProducts(response) {
   // console.log(response);
   if(response.status) {
-    if(response.products.length) {
+    var len = response.products.length;
+    if(len) {
       // if the length of product list is not 0
+      var i = 0;
+      var products = response.products;
+      var list = $('.product-list');
+      for(i = 0; i < len; i++) {
+        if (products[i].name == '') {
+          list.append('<div class="item-product" data-index='+ i +'>No name</div>');
+        } else {
+          list.append('<div class="item-product" data-index='+ i +'>'+ products[i].name +'</div>');
+        }
+      }
     } else {
       // if the length of product list is 0
       $('.product-list').html("The current list of products is empty");
