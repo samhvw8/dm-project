@@ -1,0 +1,60 @@
+div.
+  <div class="modal fade" id="addProduct" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add new product</h4>
+        </div>
+        <div class="modal-body">
+          <form>
+            <!-- row 1 -->
+            <div class="form-group row">
+              <label for="product-name" class="col-xs-2 col-form-label">Product name</label>
+              <div class="col-xs-10">
+                <input class="form-control" type="text" value="" id="product-name">
+              </div>
+            </div>
+            <!-- row 2 -->
+            <div class="form-group row">
+              <label for="product-type" class="col-xs-2 col-form-label">Type</label>
+              <div class="col-xs-10">
+                <input class="form-control" type="text" value="" id="product-type">
+              </div>
+            </div>
+            <!-- row 3 -->
+            <div class="form-group row">
+              <label for="product-price" class="col-xs-2 col-form-label">Price ($)</label>
+              <div class="col-xs-10">
+                <input class="form-control" type="number" value="" id="product-price" placeholder="0">
+              </div>
+            </div>
+            <!-- Description row -->
+            <div class="form-group row">
+              <label class="col-xs-2 col-form-label">Description</label>
+              <div class="col-xs-10 des-form">
+                <!-- des row 1 -->
+                <div class="row des-row" data-offset="0" data-generated="false">
+                  <div class="col-xs-2">
+                    <input class="form-control des-key" name="description" type="text" value="" placeholder="key">
+                  </div>
+                  <div class="col-xs-10">
+                    <input class="form-control des-value" name="description" type="text" value="" placeholder="value">
+                  </div>
+                </div>
+                <!--<div class="row des-separator"></div>-->
+
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" id="add-button" data-dismiss="modal">Add</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+
+    </div>
+  </div>

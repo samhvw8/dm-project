@@ -1,0 +1,27 @@
+{
+  "name": "dm-project",
+  "description": "Data Modeling Project",
+  "main": "app.js",
+  "authors": [
+    "luongnv"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "data",
+    "modeling"
+  ],
+  "homepage": "https://github.com/luongli/dm-project",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower-plugins/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7"
+  }
+}
