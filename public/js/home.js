@@ -1,4 +1,6 @@
 var host = location.protocol + "//" + window.location.hostname + (location.port ? ':'+location.port: '');
+var products = null;
+var currentProductId = -1;
 $(document).ready(function() {
   // get all
   $.ajax({
@@ -51,7 +53,35 @@ $(document).ready(function() {
       dataType: "json",
     }); // end ajax request
   });
-});
+
+  $(document).on('click', '.item-product', function() {
+    var index = $(this).data('index');
+    var len = products.length;
+    if (index < len) {
+      showProductDetails(products[index]);
+    }
+  });
+
+  $(document).on('click', '#delete-button', function () {
+    $('#confirmModal').modal('show');
+  });
+
+  $(document).on('click', '#confirm-delete', function () {
+    $.ajax({
+      type: "DELETE",
+      url: host + '/api/product/' + currentProductId,
+      success: onDeleteSuccess,
+      error: onCreateError,
+      dataType: "json",
+    }); // end ajax request
+  });
+}); // end document ready
+
+function onDeleteSuccess() {
+  alert("Delete successfully");
+  currentProductId = -1;
+  location.reload();
+}
 
 function onCreateSuccess() {
   alert("created successfully");
@@ -82,10 +112,10 @@ function getDesRowHTML(parentOffset) {
 
   var html = '<!-- sub row lv1 -->\
   <div class="row des-row" data-offset="' + (parentOffset) + '" data-generated="false">\
-    <div class="col-xs-2 col-xs-offset-' + (parentOffset) +'">\
+    <div class="col-xs-4 col-xs-offset-' + (parentOffset) +'">\
       <input class="form-control des-key" name="description" type="text" value="" placeholder="key">\
     </div>\
-    <div class="col-xs-'+ (10-parentOffset) + '">\
+    <div class="col-xs-'+ (8-parentOffset) + '">\
       <input class="form-control des-value" name="description" type="text" value="" placeholder="value">\
     </div>\
   </div>';
@@ -104,18 +134,41 @@ function showProducts(response) {
     if(len) {
       // if the length of product list is not 0
       var i = 0;
-      var products = response.products;
+      products = response.products;
       var list = $('.product-list');
       for(i = 0; i < len; i++) {
         if (products[i].name == '') {
-          list.append('<div class="item-product" data-index='+ i +'>No name</div>');
+          list.append('<a class="item-product" data-index='+ i +'>No name</a>');
         } else {
-          list.append('<div class="item-product" data-index='+ i +'>'+ products[i].name +'</div>');
+          list.append('<a class="item-product" data-index='+ i +'>'+ products[i].name +'</a>');
         }
       }
     } else {
       // if the length of product list is 0
       $('.product-list').html("The current list of products is empty");
     }
+  }
+}
+
+
+function showProductDetails(obj) {
+  // sorry
+  // i do not sanitize user input here
+  // XSS can be exploited here
+  console.log(obj);
+  $('#name-field').html(obj.name);
+  $('#type-field').html(obj.type);
+  $('#price-field').html(obj.price);
+  currentProductId = obj._id;
+  var details = obj.detail;
+  $('.detail-value').html('');
+
+  for (var key in details) {
+    // skip loop if the property is from prototype
+    if (!details.hasOwnProperty(key)) continue;
+    $('.detail-value').append('<div class="row">\
+      <div class="col-md-4 detail-key">'+ key +'</div>\
+      <div class="col-md-8">'+ details[key] +'</div>\
+      </div>');
   }
 }
