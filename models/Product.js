@@ -8,7 +8,7 @@ var ProductSchema = new Schema({
     _id: Number,
     name: String,
     type: String,
-    detail: Schema.Types.Mixed,
+    detail: {},
     price: Number
 });
 
