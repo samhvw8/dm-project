@@ -20,10 +20,12 @@ var addProduct = function (req, res) {
 
     product.price = req.body.price;
 
+    product.img = req.body.img;
+
     var detail = {};
 
     for (var key in req.body) {
-        if (key === 'name' || key === 'type' || key === 'price')
+        if (key === 'name' || key === 'type' || key === 'price' || key === 'img')
             continue;
 
         detail[key] = req.body[key];
