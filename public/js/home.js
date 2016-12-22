@@ -27,10 +27,12 @@ $(document).ready(function() {
     var name = $('#product-name').val();
     var type = $('#product-type').val();
     var price = $('#product-price').val();
+    var image = $('#product-image').val();
     var data = {
       name: name,
       type: type,
-      price: price
+      price: price,
+      img: image
     }
     // get detail value
     $('.des-row').each(function() {
@@ -63,7 +65,11 @@ $(document).ready(function() {
   });
 
   $(document).on('click', '#delete-button', function () {
-    $('#confirmModal').modal('show');
+    if (currentProductId == -1) {
+      alert("Choose product first");
+    } else {
+      $('#confirmModal').modal('show');
+    }
   });
 
   $(document).on('click', '#confirm-delete', function () {
@@ -159,6 +165,11 @@ function showProductDetails(obj) {
   $('#name-field').html(obj.name);
   $('#type-field').html(obj.type);
   $('#price-field').html(obj.price);
+  if(obj.hasOwnProperty("img") && obj.img !== '') {
+    $('.product-image').attr("src", obj.img);
+  } else {
+    $('.product-image').attr("src", '');
+  }
   currentProductId = obj._id;
   var details = obj.detail;
   $('.detail-value').html('');
