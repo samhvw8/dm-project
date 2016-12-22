@@ -57,3 +57,8 @@ nav > .container {
 .detail-key {
   font-weight: bold;
 }
+
+.product-image {
+  max-width: auto;
+  max-height: 300px;
+}

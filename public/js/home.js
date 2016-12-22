@@ -165,6 +165,11 @@ function showProductDetails(obj) {
   $('#name-field').html(obj.name);
   $('#type-field').html(obj.type);
   $('#price-field').html(obj.price);
+  if(obj.hasOwnProperty("img") && obj.img !== '') {
+    $('.product-image').attr("src", obj.img);
+  } else {
+    $('.product-image').attr("src", '');
+  }
   currentProductId = obj._id;
   var details = obj.detail;
   $('.detail-value').html('');
